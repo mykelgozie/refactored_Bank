@@ -10,7 +10,7 @@ namespace bankapp_refactored_week4.BankLibs
 
 
         public int AccountNumber { get; private set; }
-        //public AccountType AccountType { get; set; }
+        
         public int OwnerId { get; set; }
 
         public DateTime DateRegistered { get; set; }
@@ -57,6 +57,8 @@ namespace bankapp_refactored_week4.BankLibs
 
 
         }
+
+     
 
         public void MakeWithdrawal(int accNum, decimal amt, string note, AccountType type)
         {
