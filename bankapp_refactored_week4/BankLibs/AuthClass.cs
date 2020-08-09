@@ -11,9 +11,21 @@ namespace bankapp_refactored_week4.BankLibs
 
         public static AccountClass Register(string name, string email, string password, int acctype)
         {
-
             AccountClass account = null;
             CustomerClass customer = null;
+
+            if (string.IsNullOrWhiteSpace(name) ||
+                string.IsNullOrWhiteSpace(email) ||
+                string.IsNullOrWhiteSpace(password)
+                )
+            {
+
+                return account;
+
+
+            }
+
+           
 
             customer = new CustomerClass(name, email, password);
             account = new AccountClass(customer.Id, acctype);

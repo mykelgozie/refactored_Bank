@@ -69,7 +69,7 @@ namespace bankapp_refactored_week4.BankLibs
 
             if (type.ToString() == "Savings" && Balance - amt < 100)
             {
-                throw new InvalidOperationException("You don't have sufficient fund for this operation");
+                throw new ArgumentOutOfRangeException("You don't have sufficient fund for this operation");
             }
 
             if (type.ToString() == "Current" && Balance - amt < 1000)
