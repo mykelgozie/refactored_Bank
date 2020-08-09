@@ -5,7 +5,7 @@ using System.Text;
 
 namespace bankapp_refactored_week4.datas
 {
-    class BankdatasClass
+    public static class BankdatasClass
     {
 
       
