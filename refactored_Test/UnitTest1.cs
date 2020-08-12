@@ -11,15 +11,19 @@ namespace refactored_Test
     [TestFixture]
     public class Tests
     {
+        // properties required for test 
         public string Email { get; private set; }
         public string  Name { get; private set; }
         public string Password { get; private set; }
         public int Acctype { get; private set; }
         public string Note { get; private set; }
 
+
         [SetUp]
         public void Setup()
-        {
+        {   
+            //assign properties 
+
             Email = "bola@gmail.com";
             Name = "bola";
             Password = "12345";
@@ -171,7 +175,7 @@ namespace refactored_Test
 
         public void MakeWithdrawalFail()
         {
-            // user details 
+          
             // amount to deposit
             decimal amtDeposit = 500;
             // register user 
@@ -182,8 +186,8 @@ namespace refactored_Test
             var balance = account.Balance;
             // amount to withdraw from account 
             decimal amtWithdraw = 1000;
-            // withdraw from user account
 
+            // withdraw from user account
             Assert.That(
                 () => account.MakeWithdrawal(account.AccountNumber, amtWithdraw, Note, account.AccountType),
                 Throws.TypeOf<System.ArgumentOutOfRangeException>()
@@ -217,7 +221,8 @@ namespace refactored_Test
             decimal amtTransfer = 1000;
             // Transfer money from 1st to 2nd account 
             account.MakeTransfer(account.AccountNumber, amtTransfer, Note, account.AccountType, account2);
-            // test for transfer 
+
+            // Assert for transfer 
             Assert.That(account.Balance, Is.EqualTo(balance - amtTransfer));
 
 
@@ -279,28 +284,19 @@ namespace refactored_Test
         }
 
 
-        ///
-        ///
-        ///
-        ///
-        ////
 
         [Test]
         public void TransactionsFail()
         {
 
-            // user details 
-            string email = "bola@gmail.com";
-            string name = "bola";
-            string password = "12345";
-            int acctype = 0;
+          
             // amount to deposit
             decimal amtDeposit = -5000;
-            string note = "withdraw money";
+
             // number of trasactions 
             int count = BankdatasClass.Transactions.Count;
             // register user 
-            AccountClass account = AuthClass.Register(name, email, password, acctype);
+            AccountClass account = AuthClass.Register(Name, Email, Password, Acctype);
 
             // deposit money into account 
             Assert.That(
