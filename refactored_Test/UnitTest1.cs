@@ -174,7 +174,6 @@ namespace refactored_Test
             // user details 
             // amount to deposit
             decimal amtDeposit = 500;
-            //string note = "withdraw money";
             // register user 
             AccountClass account = AuthClass.Register(Name, Email, Password, Acctype);
             // deposit money into account 
@@ -286,31 +285,30 @@ namespace refactored_Test
         ///
         ////
 
-        //[Test]
-        //public void TransactionsFail()
-        //{
+        [Test]
+        public void TransactionsFail()
+        {
 
-        //    // user details 
-        //    string email = "bola@gmail.com";
-        //    string name = "bola";
-        //    string password = "12345";
-        //    int acctype = 0;
-        //    // amount to deposit
-        //    decimal amtDeposit = -5000;
-        //    string note = "withdraw money";
-        //    // number of trasactions 
-        //    int count = BankdatasClass.Transactions.Count;
-        //    // register user 
-        //    AccountClass account = AuthClass.Register(name, email, password, acctype);
-        //    // deposit money into account 
-        //    account.MakeDeposit(account.AccountNumber, amtDeposit, note, account.AccountType);
-        //    // new count 
-        //    int newCount = BankdatasClass.Transactions.Count;
-        //    int expected = count + 1;
+            // user details 
+            string email = "bola@gmail.com";
+            string name = "bola";
+            string password = "12345";
+            int acctype = 0;
+            // amount to deposit
+            decimal amtDeposit = -5000;
+            string note = "withdraw money";
+            // number of trasactions 
+            int count = BankdatasClass.Transactions.Count;
+            // register user 
+            AccountClass account = AuthClass.Register(name, email, password, acctype);
 
-        //    Assert.That(newCount, !Is.EqualTo(expected));
+            // deposit money into account 
+            Assert.That(
+                () => account.MakeDeposit(account.AccountNumber, amtDeposit, Note, account.AccountType),
+                Throws.TypeOf<System.ArgumentOutOfRangeException>()
+                );
 
 
-        //}
+        }
     }
 }
